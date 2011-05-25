@@ -2,57 +2,15 @@ package ws.softlabs.lib.util.client;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DateUtils {
 
-	private static final Logger log = 
-		Logger.getLogger("kino.util." + DateUtils.class.getSimpleName());
-
-	/* UTF-8 encoded values */
-    @SuppressWarnings("serial")
-	private static final Map<String, Integer> STRING_TO_MONTH_MAP = new HashMap<String, Integer>() {{
-    	put("января",  	 0);
-    	put("февраля", 	 1);
-    	put("марта", 	 2);
-    	put("апреля", 	 3);
-    	put("мая", 		 4);
-    	put("июня", 	 5);
-    	put("июля", 	 6);
-    	put("августа", 	 7);
-    	put("сентября",  8);
-    	put("октября", 	 9);
-    	put("ноября", 	10);
-    	put("декабря", 	11);
-    }};
-    @SuppressWarnings("serial")
-    private static final Map<Integer, String> MONTH_TO_STRING_MAP = new HashMap<Integer, String>() {{
-    	put( 0, "января"  );
-    	put( 1, "февраля" );
-    	put( 2, "марта"   );
-    	put( 3, "апреля"  );
-    	put( 4, "мая"     );
-    	put( 5, "июня"    );
-    	put( 6, "июля"    );
-    	put( 7, "августа" );
-    	put( 8, "сентября");
-    	put( 9, "октября" );
-    	put(10, "ноября"  );
-    	put(11, "декабря" );
-    }};
-    @SuppressWarnings("serial")
-    private static final Map<Integer, String> DAY_TO_STRING_MAP  = new HashMap<Integer, String>() {{
-    	put(1,  "понедельник" );
-    	put(2,  "вторник"     );
-    	put(3,  "среда"    	  );
-    	put(4,  "четверг" 	  );
-    	put(5,  "пятница" 	  );
-    	put(6,  "суббота" 	  );
-    	put(0,  "воскресенье" );
-    }};
+	private static final Logger log =
+		LoggerFactory.getLogger("kino.util." + DateUtils.class.getSimpleName());
 
     public static boolean isCorrectDateString(String string) {
     	log.debug("ENTER (string = " + string + ")");
@@ -93,7 +51,7 @@ public class DateUtils {
 	    	Date newDate = new Date(System.currentTimeMillis());
 	    	
 	    	newDate.setDate(Integer.parseInt(strings[1]));
-	    	newDate.setMonth(	STRING_TO_MONTH_MAP.get(
+	    	newDate.setMonth(	Constants.STRING_TO_MONTH_MAP.get(
 	    						StringUtils.toUtf(strings[2])));
 	    	newDate.setHours(0);
 	    	newDate.setMinutes(0);
@@ -132,9 +90,9 @@ public class DateUtils {
     @SuppressWarnings("deprecation")
 	public static String dateToStringSpecial(Date date){
     	log.debug("ENTER (date = " + date + ")");
-    	String weekday  = StringUtils.fromUtf(DAY_TO_STRING_MAP.get(date.getDay()));
+    	String weekday  = StringUtils.fromUtf(Constants.DAY_TO_STRING_MAP.get(date.getDay()));
     	String monthday = ((Integer)date.getDate()).toString();
-    	String month    = StringUtils.fromUtf(MONTH_TO_STRING_MAP.get(date.getMonth()));
+    	String month    = StringUtils.fromUtf(Constants.MONTH_TO_STRING_MAP.get(date.getMonth()));
     	String result = StringUtils.firstUpcase(weekday) + ", " + monthday + " " + month;
     	log.debug("EXIT - OK (result = " + result + ")");
     	return result;
@@ -148,8 +106,6 @@ public class DateUtils {
     	String hs = (h.length() > 1) ? h : "0" + h;
     	String m  = "" + date.getMinutes();
     	String ms = (m.length() > 1) ? h : "0" + m;
-//String hs = String.format("%02d", date.getHours());
-//String ms = String.format("%02d", date.getMinutes());
 		String timeString =  hs + ":" + ms;
     	List<String> result = new ArrayList<String>();
     	result.add(dateString);
