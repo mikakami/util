@@ -9,9 +9,6 @@ public class StringUtils {
 	private static final Logger log = 
 		Logger.getLogger("kino.util." + StringUtils.class.getSimpleName());
 	
-	public static final String	laquo = "«";
-	public static final String	raquo = "»";	
-	
     public static String firstUpcase(String string) {
     	log.debug("ENTER (string = " + string +")");
     	if (string == null) {
@@ -47,8 +44,8 @@ public class StringUtils {
     	else 
     		charsetName = charset;
     	String s = string;
-    	String replace1 = fromUtf(laquo, charsetName);
-    	String replace2 = fromUtf(raquo, charsetName);
+    	String replace1 = fromUtf(Constants.laquo, charsetName);
+    	String replace2 = fromUtf(Constants.raquo, charsetName);
 		s = s.replace(replace1, "&laquo;");
 		s = s.replace(replace2, "&raquo;");
     	log.debug("EXIT (result = " + s + ")");
@@ -121,7 +118,7 @@ public class StringUtils {
 	    	if ( charsetName.equals("windows-1251") )
 	    		result = new String(
 	    							string.getBytes("UTF-8"),// original charset
-	    							charsetName );/*"windows-1251"*//*charSet.name()*/	// system charset
+	    							charsetName );
 	    	log.debug("EXIT - OK (result = " + result + ")");
 	    	return result;
     	}
