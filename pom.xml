@@ -4,11 +4,11 @@
 
   <groupId>ws.softlabs.lib</groupId>
   <artifactId>util</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <packaging>jar</packaging>
 
   <name>util</name>
-  <url>http://maven.apache.org</url>
+  <url>http://www.softlabs.ws/source/</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

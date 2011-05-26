@@ -16,7 +16,7 @@ public class DayComparator implements Comparator<String> {
 	    else if ( d1 == null) result = BEFORE;
 	    else if ( d2 == null) result = AFTER;
 	    else result = d1.compareTo(d2);
-		//System.out.println(d1 + "\n" + d2 + "\n" + result + "\n");
+
 	    return result;
 	}
 }

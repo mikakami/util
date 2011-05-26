@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Constants {
 
-	public static final int dayOffset = 4;
+	public static final int  dayOffset = 4; // add to midnight to include after-midnight shows 
 	public static final long oneDay = 24 * 60 * 60 * 1000; // msec in 1 day
 	
 	public static final String	laquo = "«";

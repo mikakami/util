@@ -2,9 +2,8 @@ package ws.softlabs.lib.util.client;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 public class DateUtils {
@@ -107,8 +106,6 @@ public class DateUtils {
     	String hs = (h.length() > 1) ? h : "0" + h;
     	String m  = "" + date.getMinutes();
     	String ms = (m.length() > 1) ? h : "0" + m;
-//String hs = String.format("%02d", date.getHours());
-//String ms = String.format("%02d", date.getMinutes());
 		String timeString =  hs + ":" + ms;
     	List<String> result = new ArrayList<String>();
     	result.add(dateString);
